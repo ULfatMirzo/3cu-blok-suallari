@@ -1,0 +1,37 @@
+using System;
+
+class Car
+{
+    public string Brand { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
+}
+
+class Program
+{
+    static Car CreateCar(string brand, string model, int year)
+    {
+        return new Car
+        {
+            Brand = brand,
+            Model = model,
+            Year = year
+        };
+    }
+
+    static void Main()
+    {
+        Console.Write("Marka: ");
+        string brand = Console.ReadLine();
+
+        Console.Write("Model: ");
+        string model = Console.ReadLine();
+
+        Console.Write("İl: ");
+        int year = int.Parse(Console.ReadLine());
+
+        Car myCar = CreateCar(brand, model, year);
+
+        Console.WriteLine($"\nAvtomobil: {myCar.Brand} {myCar.Model} ({myCar.Year})");
+    }
+}
