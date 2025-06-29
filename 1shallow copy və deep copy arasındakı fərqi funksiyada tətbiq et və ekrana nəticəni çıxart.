@@ -1,0 +1,46 @@
+using System;
+using System.Text.Json;
+
+class Address
+{
+    public string City { get; set; }
+}
+
+class Person
+{
+    public string Name { get; set; }
+    public Address Address { get; set; }
+
+    public Person ShallowCopy() => (Person)this.MemberwiseClone();
+
+    public Person DeepCopy()
+    {
+        var json = JsonSerializer.Serialize(this);
+        return JsonSerializer.Deserialize<Person>(json);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person original = new Person
+        {
+            Name = "Elvin",
+            Address = new Address { City = "Bakı" }
+        };
+
+        Person shallow = original.ShallowCopy();
+        Person deep = original.DeepCopy();
+
+        // Shallow copy-də nested obyekt eynidir
+        shallow.Address.City = "Gəncə";
+
+        // Deep copy-də dəyişiklik təsir etmir
+        deep.Address.City = "Sumqayıt";
+
+        Console.WriteLine($"Orijinal ünvan: {original.Address.City}");  // Gəncə oldu (shallow copy təsiri)
+        Console.WriteLine($"Shallow copy ünvan: {shallow.Address.City}"); // Gəncə
+        Console.WriteLine($"Deep copy ünvan: {deep.Address.City}");       // Sumqayıt
+    }
+}
