@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static Func<int, int, int> Max = (a, b) => a > b ? a : b;
+
+    static void Main()
+    {
+        Console.Write("Birinci ədəd: ");
+        int a = int.Parse(Console.ReadLine());
+
+        Console.Write("İkinci ədəd: ");
+        int b = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Ən böyük ədəd: {Max(a, b)}");
+    }
+}
