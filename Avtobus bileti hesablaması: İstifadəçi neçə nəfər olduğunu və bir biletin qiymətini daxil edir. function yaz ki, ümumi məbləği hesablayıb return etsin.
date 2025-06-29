@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    static double CalculateTotalPrice(int people, double ticketPrice)
+    {
+        return people * ticketPrice;
+    }
+
+    static void Main()
+    {
+        Console.Write("Nəfər sayı: ");
+        int people = int.Parse(Console.ReadLine());
+
+        Console.Write("Bir biletin qiyməti: ");
+        double price = double.Parse(Console.ReadLine());
+
+        double total = CalculateTotalPrice(people, price);
+        Console.WriteLine($"Ümumi məbləğ: {total} AZN");
+    }
+}
