@@ -1,0 +1,76 @@
+using System;
+
+class Program
+{
+    static bool[,] seats = new bool[5, 10]; // 5 sıra, 10 oturacaq
+
+    static void ReserveSeat()
+    {
+        Console.Write("Sıra nömrəsini daxil et (1-5): ");
+        int row = int.Parse(Console.ReadLine()) - 1;
+
+        Console.Write("Oturacaq nömrəsini daxil et (1-10): ");
+        int seatNumber = int.Parse(Console.ReadLine()) - 1;
+
+        if (row < 0 || row >= seats.GetLength(0) || seatNumber < 0 || seatNumber >= seats.GetLength(1))
+        {
+            Console.WriteLine("❌ Yanlış sıra və ya oturacaq nömrəsi.");
+            return;
+        }
+
+        if (seats[row, seatNumber])
+        {
+            Console.WriteLine("❌ Bu oturacaq artıq rezervasiya olunub.");
+        }
+        else
+        {
+            seats[row, seatNumber] = true;
+            Console.WriteLine($"✅ Rezervasiya uğurla edildi: Sıra {row + 1}, Oturacaq {seatNumber + 1}");
+        }
+    }
+
+    static void ShowSeats()
+    {
+        Console.WriteLine("\nKinoteatr oturacaqları (X - rezervasiya olunub, O - boş):");
+        for (int i = 0; i < seats.GetLength(0); i++)
+        {
+            Console.Write($"Sıra {i + 1}: ");
+            for (int j = 0; j < seats.GetLength(1); j++)
+            {
+                Console.Write(seats[i, j] ? "X " : "O ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void Main()
+    {
+        bool running = true;
+
+        Console.WriteLine("🎬 Kinoteatr Rezervasiya Sisteminə xoş gəldiniz!");
+        Console.WriteLine("Əmrlər: reserve, show, exit");
+
+        while (running)
+        {
+            Console.Write("\nƏmr daxil edin: ");
+            string command = Console.ReadLine().ToLower();
+
+            switch (command)
+            {
+                case "reserve":
+                    ReserveSeat();
+                    break;
+                case "show":
+                    ShowSeats();
+                    break;
+                case "exit":
+                    running = false;
+                    Console.WriteLine("👋 Çıxış edildi. Sağ olun!");
+                    break;
+                default:
+                    Console.WriteLine("❗ Naməlum əmr. İstifadə: reserve, show, exit");
+                    break;
+            }
+        }
+    }
+}
