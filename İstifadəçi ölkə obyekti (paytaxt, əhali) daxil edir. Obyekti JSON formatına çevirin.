@@ -1,0 +1,26 @@
+using System;
+using System.Text.Json;
+
+class Country
+{
+    public string Name { get; set; }
+    public string Capital { get; set; }
+    public int Population { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Country c = new Country();
+        Console.Write("Ölkə adı: ");
+        c.Name = Console.ReadLine();
+        Console.Write("Paytaxt: ");
+        c.Capital = Console.ReadLine();
+        Console.Write("Əhali: ");
+        c.Population = int.Parse(Console.ReadLine());
+
+        string json = JsonSerializer.Serialize(c);
+        Console.WriteLine($"\nJSON format:\n{json}");
+    }
+}
