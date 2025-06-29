@@ -1,0 +1,15 @@
+using System;
+
+class Program
+{
+    static Func<string, int> WordCount = s =>
+        string.IsNullOrWhiteSpace(s) ? 0 : s.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+
+    static void Main()
+    {
+        Console.Write("Cümlə daxil et: ");
+        string sentence = Console.ReadLine();
+
+        Console.WriteLine($"Söz sayı: {WordCount(sentence)}");
+    }
+}
