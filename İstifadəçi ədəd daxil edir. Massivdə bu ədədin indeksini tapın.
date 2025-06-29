@@ -1,0 +1,37 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Neçə element daxil edəcəksiniz? ");
+        int n = int.Parse(Console.ReadLine());
+        int[] numbers = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Element {i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.Write("\nAxtarmaq istədiyiniz ədədi daxil edin: ");
+        int searchNumber = int.Parse(Console.ReadLine());
+
+        int index = FindIndex(numbers, searchNumber);
+
+        if (index != -1)
+            Console.WriteLine($"✅ Ədəd tapıldı! İndeks: {index}");
+        else
+            Console.WriteLine("❌ Ədəd massivdə tapılmadı.");
+    }
+
+    static int FindIndex(int[] arr, int value)
+    {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == value)
+                return i; // tapıldı
+        }
+        return -1; // tapılmadı
+    }
+}
