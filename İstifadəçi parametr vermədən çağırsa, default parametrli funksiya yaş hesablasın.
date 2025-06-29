@@ -1,0 +1,24 @@
+using System;
+
+class Program
+{
+    static int CalculateAge(int birthYear = 2000)
+    {
+        int currentYear = DateTime.Now.Year;
+        return currentYear - birthYear;
+    }
+
+    static void Main()
+    {
+        Console.Write("Doğum ilini daxil et (boş burax: default 2000): ");
+        string input = Console.ReadLine();
+
+        int age;
+        if (string.IsNullOrWhiteSpace(input))
+            age = CalculateAge();
+        else
+            age = CalculateAge(int.Parse(input));
+
+        Console.WriteLine($"✅ Hesablanmış yaş: {age}");
+    }
+}
