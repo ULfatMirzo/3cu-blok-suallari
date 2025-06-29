@@ -1,0 +1,18 @@
+using System;
+
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static string GetName(Person p) => p.Name;
+
+    static void Main()
+    {
+        Person p = new Person { Name = "Rauf", Age = 28 };
+        Console.WriteLine($"Ad: {GetName(p)}");
+    }
+}
