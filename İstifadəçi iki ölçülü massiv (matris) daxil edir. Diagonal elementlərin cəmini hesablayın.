@@ -1,0 +1,49 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Matrisin ölçüsünü daxil edin (kvadrat matris üçün): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[,] matrix = new int[n, n];
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                Console.Write($"Element [{i + 1},{j + 1}]: ");
+                matrix[i, j] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        Console.WriteLine("\nDaxil edilən matris:");
+        PrintMatrix(matrix, n);
+
+        int diagonalSum = CalculateDiagonalSum(matrix, n);
+        Console.WriteLine($"\n🔍 Diaqonal elementlərin cəmi: {diagonalSum}");
+    }
+
+    static int CalculateDiagonalSum(int[,] matrix, int n)
+    {
+        int sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            sum += matrix[i, i];
+        }
+        return sum;
+    }
+
+    static void PrintMatrix(int[,] matrix, int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                Console.Write(matrix[i, j] + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+}
