@@ -1,0 +1,45 @@
+using System;
+
+class Car
+{
+    public string Model { get; set; }
+    public int Year { get; set; }
+    public string Color { get; set; }
+
+    public void ChangeColor(string newColor)
+    {
+        Color = newColor;
+    }
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"🚗 Model: {Model}, İl: {Year}, Rəng: {Color}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Car car = new Car();
+
+        Console.Write("Maşın modeli: ");
+        car.Model = Console.ReadLine();
+
+        Console.Write("İl: ");
+        car.Year = int.Parse(Console.ReadLine());
+
+        Console.Write("Rəng: ");
+        car.Color = Console.ReadLine();
+
+        Console.WriteLine("\nƏvvəl:");
+        car.PrintInfo();
+
+        Console.Write("\nYeni rəng daxil et: ");
+        string newColor = Console.ReadLine();
+        car.ChangeColor(newColor);
+
+        Console.WriteLine("\nDəyişiklikdən sonra:");
+        car.PrintInfo();
+    }
+}
