@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Year { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Neçə kitab? ");
+        int n = int.Parse(Console.ReadLine());
+
+        List<Book> books = new List<Book>();
+
+        for (int i = 0; i < n; i++)
+        {
+            Book b = new Book();
+            Console.Write($"Kitab adı: ");
+            b.Title = Console.ReadLine();
+            Console.Write($"Müəllif: ");
+            b.Author = Console.ReadLine();
+            Console.Write($"İl: ");
+            b.Year = int.Parse(Console.ReadLine());
+            books.Add(b);
+        }
+
+        int currentYear = DateTime.Now.Year;
+
+        Console.WriteLine("\n5 ildən köhnə kitablar:");
+        foreach (var b in books)
+        {
+            if (currentYear - b.Year > 5)
+                Console.WriteLine($"{b.Title} - {b.Author} ({b.Year})");
+        }
+    }
+}
