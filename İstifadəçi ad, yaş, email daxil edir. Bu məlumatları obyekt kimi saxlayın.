@@ -1,0 +1,30 @@
+using System;
+
+class User
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Email { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        User user = new User();
+
+        Console.Write("Ad daxil edin: ");
+        user.Name = Console.ReadLine();
+
+        Console.Write("Yaş daxil edin: ");
+        user.Age = int.Parse(Console.ReadLine());
+
+        Console.Write("Email daxil edin: ");
+        user.Email = Console.ReadLine();
+
+        Console.WriteLine("\n✅ İstifadəçi məlumatları:");
+        Console.WriteLine($"Ad: {user.Name}");
+        Console.WriteLine($"Yaş: {user.Age}");
+        Console.WriteLine($"Email: {user.Email}");
+    }
+}
