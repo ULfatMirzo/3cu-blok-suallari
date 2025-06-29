@@ -1,0 +1,47 @@
+using System;
+using System.Text.Json;
+
+class Address
+{
+    public string City { get; set; }
+}
+
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Address Address { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person person1 = new Person();
+        person1.Address = new Address();
+
+        Console.Write("Ad daxil et: ");
+        person1.Name = Console.ReadLine();
+
+        Console.Write("Yaş daxil et: ");
+        person1.Age = int.Parse(Console.ReadLine());
+
+        Console.Write("Şəhər daxil et: ");
+        person1.Address.City = Console.ReadLine();
+
+        // Deep Copy (JSON Serialize/Deserialize)
+        string jsonString = JsonSerializer.Serialize(person1);
+        Person person2 = JsonSerializer.Deserialize<Person>(jsonString);
+
+        // İndi yeni copy-də dəyişiklik et
+        Console.Write("\nDeep Copy-də yeni şəhər: ");
+        person2.Address.City = Console.ReadLine();
+
+        Console.WriteLine("\nOrijinal:");
+        Console.WriteLine($"{person1.Name} - {person1.Address.City}");
+        Console.WriteLine("Deep Copy:");
+        Console.WriteLine($"{person2.Name} - {person2.Address.City}");
+
+        Console.WriteLine("\n✅ Nəticə: Deep Copy nested obyektə təsir etmir!");
+    }
+}
