@@ -1,0 +1,41 @@
+using System;
+
+class Address
+{
+    public string City { get; set; }
+}
+
+class Person
+{
+    public string Name { get; set; }
+    public Address Address { get; set; }
+
+    // Shallow copy (memberwise)
+    public Person ShallowCopy()
+    {
+        return (Person)this.MemberwiseClone();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person p1 = new Person
+        {
+            Name = "Əli",
+            Address = new Address { City = "Bakı" }
+        };
+
+        Person p2 = p1.ShallowCopy();
+
+        // Dəyişiklik edirik copy-də
+        p2.Name = "Vəli";
+        p2.Address.City = "Gəncə";
+
+        Console.WriteLine($"Orijinal adı: {p1.Name}, Şəhər: {p1.Address.City}");
+        Console.WriteLine($"Kopya adı: {p2.Name}, Şəhər: {p2.Address.City}");
+
+        // Nəticə: nested obyekt (Address) dəyişir, çünki shallow copy-dir.
+    }
+}
