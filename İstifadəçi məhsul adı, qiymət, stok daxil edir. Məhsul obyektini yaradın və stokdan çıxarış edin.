@@ -1,0 +1,40 @@
+using System;
+
+class Product
+{
+    public string Name { get; set; }
+    public double Price { get; set; }
+    public int Stock { get; set; }
+
+    public void Sell(int quantity)
+    {
+        if (quantity <= Stock)
+        {
+            Stock -= quantity;
+            Console.WriteLine($"✅ Satış uğurlu: {quantity} ədəd satıldı. Qalan stok: {Stock}");
+        }
+        else
+        {
+            Console.WriteLine("❌ Yetərli stok yoxdur.");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Product p = new Product();
+        Console.Write("Məhsul adı: ");
+        p.Name = Console.ReadLine();
+        Console.Write("Qiymət: ");
+        p.Price = double.Parse(Console.ReadLine());
+        Console.Write("Stok: ");
+        p.Stock = int.Parse(Console.ReadLine());
+
+        Console.Write("\nNeçə ədəd satmaq istəyirsiniz? ");
+        int qty = int.Parse(Console.ReadLine());
+
+        p.Sell(qty);
+    }
+}
