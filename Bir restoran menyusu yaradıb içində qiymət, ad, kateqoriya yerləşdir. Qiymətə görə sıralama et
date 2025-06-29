@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class MenuItem
+{
+    public string Name { get; set; }
+    public double Price { get; set; }
+    public string Category { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<MenuItem> menu = new List<MenuItem>();
+
+        Console.Write("Neçə menyu elementi əlavə etmək istəyirsiniz? ");
+        int n = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < n; i++)
+        {
+            MenuItem item = new MenuItem();
+
+            Console.Write("Ad: ");
+            item.Name = Console.ReadLine();
+
+            Console.Write("Qiymət: ");
+            item.Price = double.Parse(Console.ReadLine());
+
+            Console.Write("Kateqoriya: ");
+            item.Category = Console.ReadLine();
+
+            menu.Add(item);
+        }
+
+        Console.WriteLine("\nMenyu (qiymətə görə artan sırada):");
+        var sortedMenu = menu.OrderBy(x => x.Price);
+
+        foreach (var item in sortedMenu)
+        {
+            Console.WriteLine($"{item.Name} - {item.Category} - {item.Price} AZN");
+        }
+    }
+}
