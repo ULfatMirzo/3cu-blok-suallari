@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Neçə element daxil edəcəksiniz? ");
+        int n = int.Parse(Console.ReadLine());
+        int[] original = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Element {i + 1}: ");
+            original[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("\nDaxil edilən orijinal massiv:");
+        PrintArray(original);
+
+        // Deep copy: yeni massiv yaradılır və elementlər köçürülür
+        int[] deepCopy = new int[original.Length];
+        Array.Copy(original, deepCopy, original.Length);
+
+        Console.Write("\nKopyada hansı indeksdəki elementi dəyişmək istəyirsiniz? (0-dan başlayır): ");
+        int index = int.Parse(Console.ReadLine());
+
+        Console.Write("Yeni dəyəri daxil edin: ");
+        int newValue = int.Parse(Console.ReadLine());
+
+        deepCopy[index] = newValue;
+
+        Console.WriteLine("\n🔍 Kopya dəyişdirildikdən sonra:");
+
+        Console.WriteLine("Orijinal massiv:");
+        PrintArray(original);
+
+        Console.WriteLine("Deep copy massiv:");
+        PrintArray(deepCopy);
+
+        Console.WriteLine("\n📌 Gördüyünüz kimi, deep copy dəyişdiriləndə orijinal dəyişmir.");
+    }
+
+    static void PrintArray(int[] arr)
+    {
+        foreach (var item in arr)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+    }
+}
