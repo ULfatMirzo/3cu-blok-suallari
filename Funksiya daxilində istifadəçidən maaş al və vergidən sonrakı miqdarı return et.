@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    static double CalculateNetSalary()
+    {
+        Console.Write("Maaşınızı daxil edin: ");
+        double salary = double.Parse(Console.ReadLine());
+
+        double taxRate = 0.14; // 14% vergi
+        double tax = salary * taxRate;
+
+        return salary - tax;
+    }
+
+    static void Main()
+    {
+        double netSalary = CalculateNetSalary();
+        Console.WriteLine($"Vergidən sonra maaş: {netSalary} AZN");
+    }
+}
