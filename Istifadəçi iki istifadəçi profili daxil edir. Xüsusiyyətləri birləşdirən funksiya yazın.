@@ -1,0 +1,37 @@
+using System;
+
+class Profile
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+
+    public static Profile Merge(Profile p1, Profile p2)
+    {
+        return new Profile
+        {
+            Name = $"{p1.Name} & {p2.Name}",
+            Email = $"{p1.Email}; {p2.Email}"
+        };
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Profile p1 = new Profile();
+        Console.Write("1-ci ad: ");
+        p1.Name = Console.ReadLine();
+        Console.Write("1-ci email: ");
+        p1.Email = Console.ReadLine();
+
+        Profile p2 = new Profile();
+        Console.Write("2-ci ad: ");
+        p2.Name = Console.ReadLine();
+        Console.Write("2-ci email: ");
+        p2.Email = Console.ReadLine();
+
+        var merged = Profile.Merge(p1, p2);
+        Console.WriteLine($"\nBirləşmiş profil: Ad = {merged.Name}, Email = {merged.Email}");
+    }
+}
