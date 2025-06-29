@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static int GetRandom(int min, int max)
+    {
+        Random rand = new Random();
+        return rand.Next(min, max + 1);
+    }
+
+    static void Main()
+    {
+        Console.Write("Minimum ədəd: ");
+        int min = int.Parse(Console.ReadLine());
+
+        Console.Write("Maksimum ədəd: ");
+        int max = int.Parse(Console.ReadLine());
+
+        int random = GetRandom(min, max);
+        Console.WriteLine($"✅ Təsadüfi ədəd: {random}");
+    }
+}
