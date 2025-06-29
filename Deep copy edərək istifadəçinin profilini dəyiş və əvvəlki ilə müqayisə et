@@ -1,0 +1,29 @@
+using System;
+using System.Text.Json;
+
+class Profile
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Profile DeepCopy()
+    {
+        var json = JsonSerializer.Serialize(this);
+        return JsonSerializer.Deserialize<Profile>(json);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Profile p1 = new Profile { Name = "Elvin", Age = 25 };
+        Profile p2 = p1.DeepCopy();
+
+        p2.Name = "Samir";
+        p2.Age = 30;
+
+        Console.WriteLine($"Orijinal: {p1.Name}, {p1.Age}");
+        Console.WriteLine($"Kopya: {p2.Name}, {p2.Age}");
+    }
+}
