@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+
+class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int Year { get; set; }
+
+    // Arrow function ilə print
+    public void Print() => Console.WriteLine($"{Title} — {Author} ({Year})");
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Book> books = new List<Book>();
+
+        Console.Write("Neçə kitab daxil edəcəksiniz? ");
+        int n = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < n; i++)
+        {
+            Book book = new Book();
+
+            Console.Write("Kitab adı: ");
+            book.Title = Console.ReadLine();
+
+            Console.Write("Müəllif: ");
+            book.Author = Console.ReadLine();
+
+            Console.Write("İl: ");
+            book.Year = int.Parse(Console.ReadLine());
+
+            books.Add(book);
+        }
+
+        Console.WriteLine("\nKitablar:");
+        books.ForEach(book => book.Print());
+    }
+}
