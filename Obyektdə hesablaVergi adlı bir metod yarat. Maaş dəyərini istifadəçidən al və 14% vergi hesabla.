@@ -1,0 +1,27 @@
+using System;
+
+class Employee
+{
+    public double Salary { get; set; }
+
+    public double CalculateTax()
+    {
+        return Salary * 0.14;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Employee emp = new Employee();
+
+        Console.Write("Maaşınızı daxil edin: ");
+        emp.Salary = double.Parse(Console.ReadLine());
+
+        double tax = emp.CalculateTax();
+
+        Console.WriteLine($"Vergi (14%): {tax} AZN");
+        Console.WriteLine($"Vergidən sonra maaş: {emp.Salary - tax} AZN");
+    }
+}
