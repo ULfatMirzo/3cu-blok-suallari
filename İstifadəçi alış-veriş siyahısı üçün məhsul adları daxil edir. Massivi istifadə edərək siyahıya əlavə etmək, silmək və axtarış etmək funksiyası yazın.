@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static List<string> shoppingList = new List<string>();
+
+    static void AddItem()
+    {
+        Console.Write("Əlavə etmək istədiyiniz məhsulun adını daxil edin: ");
+        string item = Console.ReadLine();
+        shoppingList.Add(item);
+        Console.WriteLine($"✅ {item} siyahıya əlavə olundu.");
+    }
+
+    static void RemoveItem()
+    {
+        Console.Write("Silmək istədiyiniz məhsulun adını daxil edin: ");
+        string item = Console.ReadLine();
+        if (shoppingList.Remove(item))
+            Console.WriteLine($"✅ {item} siyahıdan silindi.");
+        else
+            Console.WriteLine($"❌ {item} siyahıda tapılmadı.");
+    }
+
+    static void SearchItem()
+    {
+        Console.Write("Axtarmaq istədiyiniz məhsulun adını daxil edin: ");
+        string item = Console.ReadLine();
+        if (shoppingList.Contains(item))
+            Console.WriteLine($"🔍 {item} siyahıda mövcuddur.");
+        else
+            Console.WriteLine($"🔍 {item} siyahıda yoxdur.");
+    }
+
+    static void ShowList()
+    {
+        Console.WriteLine("\n🛒 Alış-veriş siyahısı:");
+        if (shoppingList.Count == 0)
+        {
+            Console.WriteLine("Siyahı boşdur.");
+            return;
+        }
+        int i = 1;
+        foreach (var item in shoppingList)
+        {
+            Console.WriteLine($"{i++}. {item}");
+        }
+    }
+
+    static void Main()
+    {
+        bool running = true;
+
+        Console.WriteLine("🛍️ Alış-veriş siyahısı proqramına xoş gəlmisiniz!");
+        Console.WriteLine("Əmrlər: add, remove, search, show, exit");
+
+        while (running)
+        {
+            Console.Write("\nƏmr daxil edin: ");
+            string command = Console.ReadLine().ToLower();
+
+            switch (command)
+            {
+                case "add":
+                    AddItem();
+                    break;
+                case "remove":
+                    RemoveItem();
+                    break;
+                case "search":
+                    SearchItem();
+                    break;
+                case "show":
+                    ShowList();
+                    break;
+                case "exit":
+                    running = false;
+                    Console.WriteLine("👋 Proqramdan çıxdınız. Sağ olun!");
+                    break;
+                default:
+                    Console.WriteLine("❗ Naməlum əmr. Zəhmət olmasa [add, remove, search, show, exit] istifadə edin.");
+                    break;
+            }
+        }
+    }
+}
