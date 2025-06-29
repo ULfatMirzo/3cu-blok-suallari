@@ -1,0 +1,27 @@
+using System;
+
+class Customer
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Customer customer = new Customer();
+
+        Console.Write("Ad: ");
+        customer.FirstName = Console.ReadLine();
+
+        Console.Write("Soyad: ");
+        customer.LastName = Console.ReadLine();
+
+        Console.Write("Yaş: ");
+        customer.Age = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"\nMüştəri: {customer.FirstName} {customer.LastName}, Yaş: {customer.Age}");
+    }
+}
