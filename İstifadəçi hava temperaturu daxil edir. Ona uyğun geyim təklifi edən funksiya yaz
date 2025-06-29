@@ -1,0 +1,24 @@
+using System;
+
+class Program
+{
+    static void SuggestClothing(int temp)
+    {
+        if (temp <= 0)
+            Console.WriteLine("Qalın palto və əlcək geyinin.");
+        else if (temp <= 15)
+            Console.WriteLine("İncə gödəkçə və şalvar geyinin.");
+        else if (temp <= 25)
+            Console.WriteLine("Köynək və cins şalvar uyğundur.");
+        else
+            Console.WriteLine("Qısaqol və şortik geyinin.");
+    }
+
+    static void Main()
+    {
+        Console.Write("Temperatur daxil et: ");
+        int temperature = int.Parse(Console.ReadLine());
+
+        SuggestClothing(temperature);
+    }
+}
