@@ -1,0 +1,39 @@
+using System;
+
+class Person
+{
+    public string Name { get; set; }
+    public Address Address { get; set; }
+
+    public Person ShallowCopy()
+    {
+        return (Person)this.MemberwiseClone();
+    }
+}
+
+class Address
+{
+    public string City { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person p1 = new Person
+        {
+            Name = "Aydın",
+            Address = new Address { City = "Bakı" }
+        };
+
+        Person p2 = p1.ShallowCopy();
+
+        // p2-yə yeni property əlavə etmək mümkün deyil (class tərifi dəyişmədikcə)
+        // Amma nested obyektlər paylaşılır:
+
+        p2.Address.City = "Gəncə";
+
+        Console.WriteLine($"Orijinal şəhər: {p1.Address.City}");  // Gəncə olacaq, dəyişib
+        Console.WriteLine($"Kopya şəhər: {p2.Address.City}");
+    }
+}
