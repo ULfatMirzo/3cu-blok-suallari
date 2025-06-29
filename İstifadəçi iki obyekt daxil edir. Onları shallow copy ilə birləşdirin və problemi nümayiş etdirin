@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+class User
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Email { get; set; }
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Ad: {Name}, Yaş: {Age}, Email: {Email}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<User> users = new List<User>();
+        bool continueInput = true;
+
+        Console.WriteLine("👤 İstifadəçi məlumatı daxil etmə sistemi");
+        Console.WriteLine("Bir neçə istifadəçi daxil edə bilərsiniz.\n");
+
+        while (continueInput)
+        {
+            User user = new User();
+
+            Console.Write("Ad daxil edin: ");
+            user.Name = Console.ReadLine();
+
+            Console.Write("Yaş daxil edin: ");
+            user.Age = int.Parse(Console.ReadLine());
+
+            Console.Write("Email daxil edin: ");
+            user.Email = Console.ReadLine();
+
+            users.Add(user);
+
+            Console.Write("\nDavam etmək istəyirsiniz? (beli/xeyr): ");
+            string answer = Console.ReadLine().ToLower();
+
+            if (answer != "beli" && answer != "he" && answer != "hə")
+            {
+                continueInput = false;
+            }
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("✅ Bütün daxil edilən istifadəçilər:");
+        foreach (var u in users)
+        {
+            u.PrintInfo();
+        }
+    }
+}
