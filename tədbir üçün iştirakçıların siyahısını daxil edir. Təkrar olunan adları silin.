@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Neçə iştirakçı adı daxil edəcəksiniz? ");
+        int n = int.Parse(Console.ReadLine());
+        List<string> participants = new List<string>();
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Ad {i + 1}: ");
+            participants.Add(Console.ReadLine());
+        }
+
+        Console.WriteLine("\nDaxil edilən adlar (təkrarlarla):");
+        PrintList(participants);
+
+        List<string> uniqueParticipants = RemoveDuplicates(participants);
+
+        Console.WriteLine("\nTəkrarlanan adlar silindikdən sonra:");
+        PrintList(uniqueParticipants);
+    }
+
+    static List<string> RemoveDuplicates(List<string> list)
+    {
+        HashSet<string> set = new HashSet<string>(list);
+        return new List<string>(set);
+    }
+
+    static void PrintList(List<string> list)
+    {
+        if (list.Count == 0)
+        {
+            Console.WriteLine("(Siyahı boşdur)");
+            return;
+        }
+
+        foreach (var item in list)
+        {
+            Console.WriteLine("- " + item);
+        }
+    }
+}
