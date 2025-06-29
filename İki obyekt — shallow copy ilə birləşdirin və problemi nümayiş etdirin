@@ -1,0 +1,67 @@
+using System;
+
+class Address
+{
+    public string City { get; set; }
+}
+
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Address Address { get; set; }
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Ad: {Name}, Yaş: {Age}, Şəhər: {Address.City}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("👤 1-ci şəxsin məlumatlarını daxil et");
+        Person person1 = CreatePerson();
+
+        Console.WriteLine("\n👤 2-ci şəxsin məlumatlarını daxil et");
+        Person person2 = CreatePerson();
+
+        Console.WriteLine("\n✅ Əvvəlki vəziyyət:");
+        Console.WriteLine("1-ci şəxs:");
+        person1.PrintInfo();
+        Console.WriteLine("2-ci şəxs:");
+        person2.PrintInfo();
+
+        Console.WriteLine("\n🔗 Shallow copy ilə 2-ci şəxsin ünvanı 1-ci şəxsin ünvanına kopyalanır...");
+        person2.Address = person1.Address; // Shallow copy!
+
+        Console.WriteLine("\n⚡ İndi 2-ci şəxsin ünvan şəhərini dəyiş:");
+        Console.Write("Yeni şəhər: ");
+        person2.Address.City = Console.ReadLine();
+
+        Console.WriteLine("\n📌 Dəyişiklikdən sonra:");
+        Console.WriteLine("1-ci şəxs:");
+        person1.PrintInfo();
+        Console.WriteLine("2-ci şəxs:");
+        person2.PrintInfo();
+
+        Console.WriteLine("\n💡 Nəticə: Address shallow copy olduğu üçün nested obyekt paylaşılır — biri dəyişəndə o biri də dəyişir!");
+    }
+
+    static Person CreatePerson()
+    {
+        Person p = new Person();
+        Console.Write("Ad: ");
+        p.Name = Console.ReadLine();
+
+        Console.Write("Yaş: ");
+        p.Age = int.Parse(Console.ReadLine());
+
+        p.Address = new Address();
+        Console.Write("Şəhər: ");
+        p.Address.City = Console.ReadLine();
+
+        return p;
+    }
+}
