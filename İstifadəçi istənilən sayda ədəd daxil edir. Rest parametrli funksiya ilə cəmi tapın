@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    static int Sum(params int[] numbers)
+    {
+        int total = 0;
+        foreach (var num in numbers)
+            total += num;
+        return total;
+    }
+
+    static void Main()
+    {
+        Console.Write("Ədədləri vergüllə ayırıb daxil et: ");
+        string input = Console.ReadLine();
+
+        string[] parts = input.Split(',');
+        int[] numbers = Array.ConvertAll(parts, int.Parse);
+
+        int total = Sum(numbers);
+
+        Console.WriteLine($"✅ Cəm: {total}");
+    }
+}
