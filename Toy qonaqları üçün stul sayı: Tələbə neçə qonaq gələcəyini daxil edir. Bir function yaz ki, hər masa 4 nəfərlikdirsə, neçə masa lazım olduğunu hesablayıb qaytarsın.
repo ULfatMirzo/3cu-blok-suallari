@@ -1,0 +1,15 @@
+using System;
+
+class Program
+{
+    static int CalculateTables(int guests) => (guests + 3) / 4;
+
+    static void Main()
+    {
+        Console.Write("Qonaq sayı daxil edin: ");
+        int guests = int.Parse(Console.ReadLine());
+
+        int tables = CalculateTables(guests);
+        Console.WriteLine($"Lazım olan masa sayı: {tables}");
+    }
+}
