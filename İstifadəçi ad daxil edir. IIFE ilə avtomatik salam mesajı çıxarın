@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Adınızı daxil edin: ");
+        string name = Console.ReadLine();
+
+        // IIFE kimi dərhal işləyən anonim funksiya
+        Action greet = () =>
+        {
+            Console.WriteLine($"Salam, {name}!");
+        };
+        greet();  // dərhal çağırılır
+    }
+}
