@@ -1,0 +1,49 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Neçə ədəd daxil edəcəksiniz? ");
+        int n = int.Parse(Console.ReadLine());
+        double[] numbers = new double[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Ədəd {i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+        }
+
+        double average = CalculateAverage(numbers);
+        double median = CalculateMedian(numbers);
+
+        Console.WriteLine($"\n✅ Ədədi orta: {average}");
+        Console.WriteLine($"✅ Median: {median}");
+    }
+
+    static double CalculateAverage(double[] arr)
+    {
+        double sum = 0;
+        foreach (var num in arr)
+        {
+            sum += num;
+        }
+        return sum / arr.Length;
+    }
+
+    static double CalculateMedian(double[] arr)
+    {
+        Array.Sort(arr);
+        int n = arr.Length;
+        if (n % 2 == 1)
+        {
+            // Tək element sayı
+            return arr[n / 2];
+        }
+        else
+        {
+            // Cüt element sayı
+            return (arr[(n / 2) - 1] + arr[n / 2]) / 2.0;
+        }
+    }
+}
