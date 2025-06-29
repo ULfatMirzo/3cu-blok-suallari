@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+
+class Employee
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Neçə əməkdaş? ");
+        int count = int.Parse(Console.ReadLine());
+
+        List<Employee> employees = new List<Employee>();
+
+        for (int i = 0; i < count; i++)
+        {
+            Employee e = new Employee();
+            Console.Write("Ad: ");
+            e.Name = Console.ReadLine();
+            Console.Write("Yaş: ");
+            e.Age = int.Parse(Console.ReadLine());
+            employees.Add(e);
+        }
+
+        Console.WriteLine("\n✅ Yaşı 30-dan yuxarı olan əməkdaşlar:");
+        foreach (var e in employees)
+        {
+            if (e.Age > 30)
+            {
+                Console.WriteLine($"{e.Name} ({e.Age} yaş)");
+            }
+        }
+    }
+}
