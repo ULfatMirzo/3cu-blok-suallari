@@ -1,0 +1,27 @@
+using System;
+
+class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+}
+
+class Program
+{
+    static Person GetPersonFromInput()
+    {
+        Console.Write("Ad: ");
+        string firstName = Console.ReadLine();
+
+        Console.Write("Soyad: ");
+        string lastName = Console.ReadLine();
+
+        return new Person { FirstName = firstName, LastName = lastName };
+    }
+
+    static void Main()
+    {
+        Person p = GetPersonFromInput();
+        Console.WriteLine($"Salam, {p.FirstName} {p.LastName}!");
+    }
+}
